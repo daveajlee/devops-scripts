@@ -9,3 +9,9 @@ fi
 BACKUPFILE=backup.`date +"%Y%m%d%H%M"`.sql
 # Call backup method in mysql and redirect output to backup file.
 ${1}/bin/mysqldump -uroot --all-databases > ${2}/${BACKUPFILE}
+#Check if for some reason no data was written in to the file.
+if [ ! -s ${2}/${BACKUPFILE} ]
+then
+    echo 'No data was written - is the database working correctly? Cleaning up empty file...'
+    rm ${2}/${BACKUPFILE}
+fi
