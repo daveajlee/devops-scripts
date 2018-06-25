@@ -2,6 +2,10 @@
 NAME=$1;
 PORT=$2;
 
+#Define constants
+#This variable should contain the prefix/group id for your docker container.
+PREFIX="prefix"
+
 #If a container is already running with this name, then stop and delete it.
 if [  "$(docker ps -q -f name=$NAME)" ]; then
   # stop and clean up
@@ -14,11 +18,11 @@ if [  "$(docker ps -aq -f status=exited -f name=$NAME)" ]; then
   docker rm $NAME
 fi
 #Remove the image if it exists
-if [ "$(docker images -q daveajlee/$NAME)" ]; then
+if [ "$(docker images -q $PREFIX/$NAME)" ]; then
   #Remove image
-  docker rmi daveajlee/$NAME
+  docker rmi $PREFIX/$NAME
 fi
 #Now rebuild the image
-docker build -t daveajlee/$NAME .
+docker build -t $PREFIX/$NAME .
 #Now start the container
-docker run -d -p $PORT:$PORT --name $NAME -t daveajlee/$NAME
+docker run -d -p $PORT:$PORT --name $NAME -t $PREFIX/$NAME
