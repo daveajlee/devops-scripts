@@ -5,7 +5,7 @@ node {
    }
    stage('Build and Deploy') {
        // Run the maven build
-       sh "'${mvnHome}/bin/mvn' clean deploy -Panalysis -DaltDeploymentRepository=deployment::default::http://your-maven-url:9002/repository/maven-snapshots/"
+       sh "'${mvnHome}/bin/mvn' clean deploy -Panalysis -DaltDeploymentRepository=deployment::default::http://your-nexus-url:9002/repository/maven-snapshots/"
    }
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
