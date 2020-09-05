@@ -1,5 +1,7 @@
 # devops-scripts
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/51dd130072b04844bc98fa7f019ae7d0)](https://app.codacy.com/manual/dave_33/devops-scripts?utm_source=github.com&utm_medium=referral&utm_content=daveajlee/devops-scripts&utm_campaign=Badge_Grade_Dashboard)
+
 Devops is the culture of bringing development and operations teams together to ensure realistic development environments, faster deployments and less bugs in production. I have been working in this field recently. The scripts in this repository which I have used for private projects help developers to quickly set up their own local environments.
 
 The following scripts are contained in this repository:
