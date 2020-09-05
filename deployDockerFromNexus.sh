@@ -19,7 +19,7 @@ mkdir tmp_deployment
 cd tmp_deployment
 
 #Get the maven metadata file
-curl -o versions.xml $NEXUS_URL/repository/maven-snapshots/$PACKAGE/$1/maven-metadata.xml
+curl -o versions.xml "$NEXUS_URL"/repository/maven-snapshots/"$PACKAGE"/"$1"/maven-metadata.xml
 
 #Retrieve the latest version into a variable.
 BASE_VERSION=$(xmllint --xpath '/metadata/versioning/latest/text()' versions.xml)
@@ -28,7 +28,7 @@ BASE_VERSION=$(xmllint --xpath '/metadata/versioning/latest/text()' versions.xml
 if [ -z "$BASE_VERSION" ]; then
   #This is necessary since when only one version no latest tag
   BASE_VERSION=$(xmllint --xpath '/metadata/versioning/versions/version/text()' versions.xml);
-  echo $BASE_VERSION;
+  echo "$BASE_VERSION";
   if [ -z "$BASE_VERSION" ]; then
     echo 'Base version not set';
     exit 1;
@@ -36,7 +36,7 @@ if [ -z "$BASE_VERSION" ]; then
 fi
 
 #Get the next maven metdata file.
-curl -o timestamps.xml $NEXUS_URL/repository/maven-snapshots/$PACKAGE/"$1"/$BASE_VERSION/maven-metadata.xml
+curl -o timestamps.xml "$NEXUS_URL"/repository/maven-snapshots/"$PACKAGE"/"$1"/"$BASE_VERSION"/maven-metadata.xml
 
 #Retrieve the snapshot timestamp.
 SNAPSHOT_TIMESTAMP=$(xmllint --xpath '/metadata/versioning/snapshotVersions/snapshotVersion[1]/value/text()' timestamps.xml)
@@ -47,7 +47,7 @@ if [ -z "$SNAPSHOT_TIMESTAMP" ]; then
 fi
 
 #Download the jar file.
-curl -o $1.jar $NEXUS_URL/repository/maven-snapshots/$PACKAGE/$1/$BASE_VERSION/$NAME-$SNAPSHOT_TIMESTAMP.jar
+curl -o "$1".jar "$NEXUS_URL"/repository/maven-snapshots/"$PACKAGE"/"$1"/"$BASE_VERSION"/"$NAME"-"$SNAPSHOT_TIMESTAMP".jar
 
 #Delete the versions and timestamps files.
 rm timestamps.xml
@@ -75,10 +75,10 @@ fi
 #Remove the image if it exists
 if [ "$(docker images -q $PREFIX/$NAME)" ]; then
   #Remove image
-  docker rmi $PREFIX/$NAME
+  docker rmi "$PREFIX"/"$NAME"
 fi
 #Now rebuild the image
-docker build -t $PREFIX/$NAME .
+docker build -t "$PREFIX"/"$NAME" .
 
 #Now start the container
-docker run -d -p $PORT:$PORT --name $NAME -t $PREFIX/$NAME
+docker run -d -p "$PORT":"$PORT" --name "$NAME" -t "$PREFIX"/"$NAME"

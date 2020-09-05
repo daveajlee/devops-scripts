@@ -16,30 +16,30 @@ PACKAGE="/de/davelee/mypackage"
 NEXUS_URL="http://localhost:8002"
 
 #Get the maven metadata file
-echo $NEXUS_URL/repository/maven-snapshots/$PACKAGE/$1/maven-metadata.xml
-curl -o versions.xml $NEXUS_URL/repository/maven-snapshots/$PACKAGE/$1/maven-metadata.xml
+echo "$NEXUS_URL"/repository/maven-snapshots/"$PACKAGE"/"$1"/maven-metadata.xml
+curl -o versions.xml "$NEXUS_URL"/repository/maven-snapshots/"$PACKAGE"/"$1"/maven-metadata.xml
 
 #Retrieve the latest version into a variable.
 BASE_VERSION=$(xmllint --xpath '/metadata/versioning/latest/text()' versions.xml)
-echo 'Base:'$BASE_VERSION;
+echo 'Base:'"$BASE_VERSION";
 if [[ -z "$BASE_VERSION" ]]; then
   BASE_VERSION=$(xmllint --xpath '/metadata/versioning/versions/version/text()' versions.xml)
 fi
 echo 'Base:'$BASE_VERSION;
 
 #Get the next maven metdata file.
-curl -o timestamps.xml $NEXUS_URL/repository/maven-snapshots/$PACKAGE/$1/$BASE_VERSION/maven-metadata.xml
+curl -o timestamps.xml "$NEXUS_URL"/repository/maven-snapshots/"$PACKAGE"/"$1"/"$BASE_VERSION"/maven-metadata.xml
 
 #Retrieve the snapshot timestamp.
 SNAPSHOT_TIMESTAMP=$(xmllint --xpath '/metadata/versioning/snapshotVersions/snapshotVersion[1]/value/text()' timestamps.xml)
 
 #Download the jar file.
-echo $NEXUS_URL/repository/maven-snapshots/$PACKAGE/$1/$BASE_VERSION/$NAME-$SNAPSHOT_TIMESTAMP.jar
-curl -o $NAME.jar $NEXUS_URL/repository/maven-snapshots/$PACKAGE/$1/$BASE_VERSION/$NAME-$SNAPSHOT_TIMESTAMP.jar
+echo "$NEXUS_URL"/repository/maven-snapshots/"$PACKAGE"/"$1"/"$BASE_VERSION"/"$NAME"-"$SNAPSHOT_TIMESTAMP".jar
+curl -o "$NAME".jar "$NEXUS_URL"/repository/maven-snapshots/"$PACKAGE"/"$1"/"$BASE_VERSION"/"$NAME"-"$SNAPSHOT_TIMESTAMP".jar
 
 #Delete the versions and timestamps files.
 #rm timestamps.xml
 #rm versions.xml
 
 #Start jar file.
-java -jar -Dspring.profiles.active=$PROFILE $NAME.jar
+java -jar -Dspring.profiles.active="$PROFILE" "$NAME".jar
