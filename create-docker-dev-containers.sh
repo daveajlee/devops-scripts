@@ -6,6 +6,6 @@ if [ $# -ne 5 ]
     exit
 fi
 # Create Docker container for nexus: map the specified nexusPort to the default container port and set the working directory to the /path/to/nexus directory. 
-docker run -d -p ${2}:8081 --name nexus3 -v ${1}:/nexus-data sonatype/nexus3
+docker run -d -p "${2}":8081 --name nexus3 -v "${1}":/nexus-data sonatype/nexus3
 # Create Docker container for nginx: map the specified nginxPort to the default container port and set the config and html directories to /path/to/nginxconf and /path/to/nginxhtml respectively.
-docker run -d -p ${5}:80 --name nginx -v ${4}:/usr/share/nginx/html:ro -v ${3}:/etc/nginx/nginx.conf:ro nginx
+docker run -d -p "${5}":80 --name nginx -v "${4}":/usr/share/nginx/html:ro -v "${3}":/etc/nginx/nginx.conf:ro nginx

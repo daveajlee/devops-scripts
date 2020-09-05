@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Define variables
 NAME=$1;
 PROFILE=$2

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Set variables.
 NAME=$1;
 PORT=$2;
