@@ -1,4 +1,9 @@
 #!/bin/bash
+# This is a shell script to deploy a JAR from a nexus repository in a docker container and start it.
+# The script has been tested on Docker for Mac but should work with all versions of Docker or Docker Toolbox.
+# The script takes parameters to customise the name, port and profile to use.
+# The port must match the port that the JAR normally runs in without Docker.
+# Usage: deployDockerFromNexus.sh nameOfMavenArtifact port springProfile
 
 #Define variables
 NAME=$1;

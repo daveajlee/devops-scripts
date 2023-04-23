@@ -1,3 +1,6 @@
+# This script moves a particular subfolder from an old folder to a new folder containing the complete git history.
+# Usage: moveFolderWithinGit.sh pathToOldFolder pathToNewFolder subFolderNameOldRepo branchNameInNewRepo subFolderNameNewRepo
+
 #Define variables
 OLD_DIRECTORY_PATH=$1;
 NEW_DIRECTORY_PATH=$2;

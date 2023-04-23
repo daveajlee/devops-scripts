@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This is a shell script to deploy a JAR from a nexus repository.
+# The script takes parameters to customise the name and profile to use.
+# Usage: deployJarFromNexus.sh nameOfMavenArtifact springProfile
+
 #Define variables
 NAME=$1;
 PROFILE=$2

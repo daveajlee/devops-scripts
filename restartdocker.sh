@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# This is a shell script to restart the specified docker container with a newly built image.
+# It automatically removes all traces of the previous docker container and image and builds a new image and deploys this within a container.
+# The script has been tested on Docker for Mac but should work with all versions of Docker or Docker Toolbox.
+# Usage: restartdocker.sh imageAndContainerName portToRunOn
+
 #Set variables.
 NAME=$1;
 PORT=$2;

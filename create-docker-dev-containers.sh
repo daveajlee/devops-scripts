@@ -1,4 +1,9 @@
 #!/bin/bash
+# This is a shell script to create customised docker containers for NGINX and Nexus.
+# The script has been tested on Docker for Mac but should work with all versions of Docker or Docker Toolbox.
+# The script takes parameters to customise the directories and ports used by the two containers.
+# Usage: create-docker-dev-containers.sh /path/to/nexus nexusPort /path/to/nginxconf /path/to/nginxhtml nginxPort
+
 #Check that input parameters (/path/to/nexus, nexusPort, /path/to/nginxconf, /path/to/nginxhtml, nginxPort) are present. Otherwise return usage message and exit.
 if [ $# -ne 5 ]
   then

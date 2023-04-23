@@ -1,3 +1,7 @@
+/* This is a Jenkins 2 pipeline which builds a Maven Java project from a git repository and runs JUnit tests, does a Checkstyle and FindBugs analysis and publishes the results.
+It can be extended as necessary.
+Usage: integrate this Jenkinsfile into a Jenkins 2 instance and change the git and nexus urls as indicated in the Jenkinsfile. */
+
 node {
    def mvnHome = tool 'Maven 3.3.9'
    stage('Git Checkout') {

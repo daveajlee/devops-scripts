@@ -1,4 +1,8 @@
 #!/bin/bash
+# This is a shell script to backup a mysql database.
+# This can be run using a cron job or simply by executing the script which takes two parameters with the location of the mysql folder and the location where backups should be stored.
+# Usage: mysql-backup-run.sh /path/to/mysql /path/to/backup/store
+
 #Check that input parameters (/path/to/mysql and /path/to/backup) are present. Otherwise return usage message and exit.
 if [ $# -ne 2 ]
   then
