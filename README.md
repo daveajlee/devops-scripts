@@ -7,6 +7,8 @@
 
 Devops is the culture of bringing development and operations teams together to ensure realistic development environments, faster deployments and less bugs in production. This repository contains scripts that I have written to help developers to quickly set up their own local development environments.
 
+## Contents
+
 The following scripts are contained in this repository:
 | Script File | Description |
 | --- | ----------- |
