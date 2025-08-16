@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://www.davelee.de/common/assets/img/portfolio/devopsscripts.webp" alt="Devops Scripts" width="300" height="300">
+<img src="https://www.davelee.de/common/assets/img/portfolio/devopsscripts-white.webp" alt="Devops Scripts" width="300" height="300">
 </p>
 
 <p align=center><a href="https://app.codacy.com/manual/dave_33/devops-scripts?utm_source=github.com&utm_medium=referral&utm_content=daveajlee/devops-scripts&utm_campaign=Badge_Grade_Dashboard"><img src="https://api.codacy.com/project/badge/Grade/51dd130072b04844bc98fa7f019ae7d0" alt="Codacy Badge"> </a>
